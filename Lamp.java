@@ -30,7 +30,7 @@ public class Lamp{
     
     
     // pre set color to black
-    private Color bulbColor = Color.black;
+    private Color bulbColor = Color.blue;
 
     /**  Constructor */
     public Lamp(double x, double y){
@@ -40,6 +40,7 @@ public class Lamp{
     
     // draw method
     public void draw() {
+        System.out.println("draw function");
         double left = bulbX-BULBSIZE/2.0; // left of bulb
         double top = bulbY-BULBSIZE/2.0; // top of bulb
         
@@ -63,11 +64,14 @@ public class Lamp{
      */
     public boolean onBulb(double x, double y){
         boolean onBulb = false;
+        System.out.println("Mouse on bulb function running");
+        UI.println(x + " " + y);
         // an easy approximation is to pretend it is the enclosing rectangle.
         // It is nicer to do a little bit of geometry and get it right
         // check if mouse is on bulb
         if ((x >= bulbX) && (x <= bulbX+BULBSIZE) 
-        && (y >= bulbY) && (y <= bulbY+BULBSIZE)) {
+            && (y >= bulbY) && (y <= bulbY+BULBSIZE)) {
+            System.out.println("Mouse on bulb is true");
             onBulb = true;
         }
         return onBulb;
@@ -79,9 +83,11 @@ public class Lamp{
      */
     public boolean onStem(double x, double y){
         boolean onStem = false;
+        System.out.println("Mouse on stem function running");
         // check if mouse is on stem
-         if ((x >= bulbX) && (x <= bulbX+STEMWIDTH) 
-        && (y >= STEMTOP-STEMHEIGHT) && (y <= STEMTOP)) {
+         if ((x >= bulbX-BULBSIZE/2.0) && (x <= bulbX+BULBSIZE/2.0) 
+            && (y >= STEMTOP-STEMHEIGHT) && (y <= STEMTOP)) {
+            System.out.println("Mouse on Stem is true");
             onStem = true;
         }
         return onStem;
@@ -93,8 +99,8 @@ public class Lamp{
      */
     public void turnOff(){
         // set bulb color to black to turn it off
-        Color bulbColor = Color.black;
-        lightOn = false;
+        bulbColor = Color.black;
+        System.out.println("Turn off Works");
     }   
 
     /** changeColor method (no parameters):
@@ -103,13 +109,9 @@ public class Lamp{
      * Does not redraw
      */
     public void changeColor(){
-        // if light is off turn it on
-        if (lightOn = false) {
-            lightOn = true;
-        }
-
         //choose random color for drawing
-        Color bulbColor = Color.getHSBColor((float)(Math.random()), 1.0f, 1.0f);
+        System.out.println("Change Color Works");
+        bulbColor = Color.getHSBColor((float)(Math.random()), 1.0f, 1.0f);
     }   
 }
 

@@ -37,7 +37,8 @@ public class ObjectsExercise {
 
     /** Manages the Lamp objects */
     public void manageLamps(String action, double x, double y) {
-        if (action.equals("released")){
+        if (action.equals("clicked")){
+            System.out.println("You clicked");
             if (myLamp==null || yrLamp==null) {
                 UI.printMessage("Press Lamps button first to create some lamps");
                 return;  // the lamps haven't been constructed yet.
